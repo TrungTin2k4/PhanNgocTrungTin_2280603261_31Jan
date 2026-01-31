@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛍️ Product Dashboard</h1>
+            <p class="subtitle">Quản lý sản phẩm từ API</p>
+        </header>
+
+        <div class="controls">
+            <!-- Search Box -->
+            <div class="control-group">
+                <label for="searchInput">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                    Tìm kiếm theo tên:
+                </label>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Nhập tên sản phẩm..."
+                    autocomplete="off"
+                >
+            </div>
+
+            <!-- Items per page -->
+            <div class="control-group">
+                <label for="itemsPerPage">Hiển thị:</label>
+                <select id="itemsPerPage">
+                    <option value="5">5 sản phẩm</option>
+                    <option value="10" selected>10 sản phẩm</option>
+                    <option value="20">20 sản phẩm</option>
+                </select>
+            </div>
+
+            <!-- Sort Controls -->
+            <div class="control-group sort-group">
+                <label>Sắp xếp:</label>
+                <div class="sort-buttons">
+                    <button id="sortPriceAsc" class="sort-btn" title="Giá tăng dần">
+                        💰 Giá ↑
+                    </button>
+                    <button id="sortPriceDesc" class="sort-btn" title="Giá giảm dần">
+                        💰 Giá ↓
+                    </button>
+                    <button id="sortNameAsc" class="sort-btn" title="Tên A-Z">
+                        📝 Tên ↑
+                    </button>
+                    <button id="sortNameDesc" class="sort-btn" title="Tên Z-A">
+                        📝 Tên ↓
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Đang tải dữ liệu...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="error" class="error" style="display: none;">
+            <p>❌ Có lỗi xảy ra khi tải dữ liệu. Vui lòng thử lại!</p>
+        </div>
+
+        <!-- Table Container -->
+        <div class="table-container">
+            <table id="productTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Hình ảnh</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Danh mục</th>
+                        <th>Mô tả</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Data will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-container">
+            <div class="pagination-info" id="paginationInfo">
+                Hiển thị 0 - 0 của 0 sản phẩm
+            </div>
+            <div class="pagination" id="pagination">
+                <!-- Pagination buttons will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
